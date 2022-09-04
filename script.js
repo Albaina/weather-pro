@@ -25,6 +25,25 @@ let dateEl = document.querySelector("#date");
 let now = new Date();
 dateEl.innerHTML = currentDay(now);
 
+function showTemperature(responde) {
+    let temp = Math.round(responde.data.main.temp);
+    let tempEl = document.querySelector("#temperature");
+    tempEl.innerHTML = `${temp}`;
+    let tdesc = document.querySelector("#description");
+    tdesc.innerHTML = responde.data.weather[0].description;
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `Humidity: ${responde.data.main.humidity}%`;
+    let wind = document.querySelector("#wind");
+    wind.innerHTML = `Wind: ${responde.data.wind.speed} km/h`;
+    let icon = response.data.weather[0].icon;
+    let iconEl = document.querySelector("#icon");
+    iconEl.setAttribute(
+        "img",
+        "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+    );
+    iconEl.setAttribute("alt", response.data.weather[0].description);
+}
+
 function searchMe(event) {
     event.preventDefault();
     let searchedC = document.querySelector("#valueC");
@@ -38,18 +57,6 @@ function searchMe(event) {
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", searchMe);
 //
-
-function showTemperature(responde) {
-    let temp = Math.round(responde.data.main.temp);
-    let tempEl = document.querySelector("#temperature");
-    tempEl.innerHTML = `${temp}`;
-    let tdesc = document.querySelector("#description");
-    tdesc.innerHTML = responde.data.weather[0].description;
-    let humidity = document.querySelector("#humidity");
-    humidity.innerHTML = `Humidity: ${responde.data.main.humidity}%`;
-    let wind = document.querySelector("#wind");
-    wind.innerHTML = `Wind: ${responde.data.wind.speed} km/h`;
-}
 
 function showPosition(position) {
     alert(`Your location is ${position.coords.latitude}`);
