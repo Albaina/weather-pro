@@ -35,13 +35,13 @@ function showTemperature(responde) {
     humidity.innerHTML = `Humidity: ${responde.data.main.humidity}%`;
     let wind = document.querySelector("#wind");
     wind.innerHTML = `Wind: ${responde.data.wind.speed} km/h`;
-    let icon = response.data.weather[0].icon;
+    let icon = responde.data.weather[0].icon;
     let iconEl = document.querySelector("#icon");
     iconEl.setAttribute(
-        "img",
+        "src",
         "http://openweathermap.org/img/wn/" + icon + "@2x.png"
     );
-    iconEl.setAttribute("alt", response.data.weather[0].description);
+    iconEl.setAttribute("alt", responde.data.weather[0].description);
 }
 
 function searchMe(event) {
